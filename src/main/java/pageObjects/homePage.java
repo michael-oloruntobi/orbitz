@@ -2,93 +2,52 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class homePage {
 
 	public WebDriver driver;
 
-	By logIn = By.xpath("//button[@class='sc-fjdhpX jRpNCu']");
+	By form_link_xpath = By.xpath("//a[contains(text(),'Form Authentication')]");
 
-	By inputEmail = By.xpath("//input[@id='lookup-email-input-id']");
-	
-	By submitButton = By.xpath("//button[@type='submit']");
-	
-	By enterPassword = By.xpath("//input[@id='login-with-email-and-password-password-id']");
-	
-	By demo = By.xpath("//span[contains(text(),'Swapcard Demo')]");
-	
-	By viewAttendees = By.xpath("//div[contains(text(),'Attendees')]");
-	
-	By searchLLC = By.xpath("//input[@placeholder='Search']");
-	
-	By attendees = By.xpath("//span[contains(text(),'LLC')]");
-	
-	
-	
-	
-	
-	
-	By createAccountButton = By.xpath("//button[contains(text(),'Create Account')]");
-	
-	By successAlert = By.xpath("//div[contains(text(),'Signup Successful')]");
-	
+	By username_textbox_xpath = By.xpath("//input[@id='username']");
+
+	By password_textbox_xpath = By.xpath("//input[@id='password']");
+
+	By submit_button_xpath = By.xpath("//button[@class='radius']");
+
+	By successAlert = By.xpath("//div[@id='flash']");
+
 	public homePage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 
 		this.driver = driver;
 	}
 
-	public WebElement getLogIn() {
+	public void clickFormlink() {
 
-		return driver.findElement(logIn);
+		driver.findElement(form_link_xpath).click();
 	}
 
-	public WebElement getInputEmail() {
+	public void enterUsername(String username) {
 
-		return driver.findElement(inputEmail);
+		driver.findElement(username_textbox_xpath).sendKeys(username);
+		;
 	}
-	
-	
-	public WebElement getSubmitButton() {
 
-		return driver.findElement(submitButton);
+	public void EnterPassword(String password) {
+
+		driver.findElement(password_textbox_xpath).sendKeys(password);
+		;
 	}
-	
-	public By enterPassword() {
 
-		return enterPassword;
-	}	
-	
-	
-	public WebElement getEnterPassword() {
+	public void clickSubmitButton() {
 
-		return driver.findElement(enterPassword);
-	}	
-	
-	public WebElement getDemo() {
-
-		return driver.findElement(demo);
-	}	
-	
-	public WebElement getViewAttendees() {
-
-		return driver.findElement(viewAttendees);
-	}	
-	
-	
-	public WebElement getSearchLLC() {
-
-		return driver.findElement(searchLLC);
-	}	
-	
-	public By attendees() {
-
-		return attendees;
+		driver.findElement(submit_button_xpath).click();
 	}
-	
 
-	
+	public String successMessage() {
 
+		return driver.findElement(successAlert).getText();
+	}
 
 }
