@@ -1,8 +1,8 @@
 import org.testng.annotations.Test;
-import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import pageObjects.homePage;
@@ -36,63 +36,48 @@ public class loginTest extends base {
 
 		homePage homePages = new homePage(driverx);
 
-		// Click Form Aunthentication Link
+		// Login as a user to the website
 
-		homePages.clickFormlink();
+		homePages.logIN(prop.getProperty("username"), prop.getProperty("password"));
 
-		// Enter Username
+	
+		// Enter destination Details
 
-		homePages.enterUsername(prop.getProperty("username"));
+		homePages.enterDestination(prop.getProperty("destination"));
 
-		// Input password
+		String checkInDateSearchPage = homePages.getCheckInDateHome();
 
-		homePages.EnterPassword(prop.getProperty("password"));
+		String checkOutDateSearchPage = homePages.getCheckOutDateHome();
 
-		// Submit Email
+		String travelersInfoHome = homePages.getTravelersInfoHome();
 
-		homePages.clickSubmitButton();
 
-		// assert Success message
+		// Search 
+		homePages.clickSearchSubmitButton().click();
 
-		String successM = homePages.successMessage();
+		String checkInDateResultPage = homePages.getCheckInDateResult();
 
-		assertTrue(successM.contains(prop.getProperty("successMessage")));
+		String checkOutDateResultPage = homePages.getCheckOutDateResult();
 
-		driverx.close();
+		String travelersInfoResult = homePages.getTravelersInfoResult();
 
-	}
 
-	@Test
-	public void testcase002_validateInvalidLoginDetails() throws InterruptedException {
+		//Assertion to validate Check In date is correct
 
-		homePage homePages = new homePage(driverx);
+		Assert.assertEquals(checkInDateSearchPage, checkInDateResultPage);
 
-		// Click Form Aunthentication Link
+		//Assertion to validate Checkout date is correct
 
-		homePages.clickFormlink();
+		Assert.assertEquals(checkOutDateSearchPage, checkOutDateResultPage);
 
-		// Enter Username
+		//Assertion to validate Number of passengers is correct
 
-		homePages.enterUsername(prop.getProperty("invalidUsername"));
-
-		// Input password
-
-		homePages.EnterPassword(prop.getProperty("invalidPassword"));
-
-		// Submit Email
-
-		homePages.clickSubmitButton();
-
-		// assert Success message
-
-		String successM = homePages.successMessage();
-
-		assertTrue(successM.contains(prop.getProperty("errorMessage")));
+		Assert.assertTrue(travelersInfoResult.contains(travelersInfoHome));
 
 		driverx.close();
 
 	}
-
+	
 	@AfterTest
 	public void fTeardown() {
 		// closes all the browser windows opened by web driver
