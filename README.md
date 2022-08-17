@@ -11,7 +11,8 @@ Capabilities:
 1. This framework has the capability to run the tests in local and Jenkins.
 2. Web Tests can be run on chrome.
 3. Configuration can be changed from config.properties inside src/test/resources
-4. Integration with Jenkins for scheduling is easy. 🙋
+4. Integration with Jenkins for scheduling is easy. 
+5. Screenshots are captured into screenshots folder on test failure
 
 Adding more tests :
 
@@ -30,5 +31,5 @@ Prerequisites: Java 8+ , Maven 3.8.6 Installed and path set
 3. User can also choose to run via maven commands which is highly recommended.
 4. mvn clean test - To run the test available in the testng.xml
 
-Note : User should not try to run the test from test class - Might end up in NPE. Because the listeners are configured only in testng.xml
+
 
