@@ -11,8 +11,8 @@ Capabilities:
 1. This framework has the capability to run the tests in local and Jenkins.
 2. Web Tests can be run on chrome.
 3. Configuration can be changed from config.properties inside src/test/resources
-4. Integration with Jenkins for scheduling is easy. 🙋
-5. Screenshots
+4. Integration with Jenkins for scheduling is easy. 
+5. Screenshots will saved in screenshots folder on test failure
 
 Adding more tests :
 
