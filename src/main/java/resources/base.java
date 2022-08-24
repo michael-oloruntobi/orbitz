@@ -35,20 +35,20 @@ public class base {
 		String browserName = prop.getProperty("browser");
 		
 		if (browserName.equals("chrome")) {
-			//System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "//drivers//chromedriver");
+			
 			WebDriverManager.chromedriver().setup();
 			//ChromeOptions options = new ChromeOptions();
 	        //options.addArguments("headless");
-	       // options.addArguments("window-size=1400,800");       
-	       // options.addArguments("disable-gpu");
-	        
+	        // options.addArguments("window-size=1400,800");       
+	        // options.addArguments("disable-gpu");
 			//driver = new ChromeDriver(options);
+
 			driver = new ChromeDriver();
 		}
 		
 		else if (browserName.equals("firefox")){
 				
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "//drivers//firefox");
+			WebDriverManager.firefoxdriver().setup();
 			 driver = new FirefoxDriver();
 			
 		}
