@@ -81,7 +81,9 @@ public class loginTest extends base {
 	@AfterTest
 	public void fTeardown() {
 		// closes all the browser windows opened by web driver
+
 		driverx.quit();
+
 	}
 
 }

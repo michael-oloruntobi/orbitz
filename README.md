@@ -12,6 +12,7 @@ Capabilities:
 2. Web Tests can be run on chrome.
 3. Configuration can be changed from config.properties inside src/test/resources
 4. Integration with Jenkins for scheduling is easy. 🙋
+5. Screenshots
 
 Adding more tests :
 
